@@ -6,13 +6,29 @@ using System.Threading.Tasks;
 
 namespace TP3console.Models.EntityFramework
 {
-    partial class UtilisateurPart
+    public partial class Utilisateur
     {
-        public string Utilisateurs { get; set; }
+        public Utilisateur(int id, string login, string email, string pwd, ICollection<Avi> avis)
+        {
+            Id = id;
+            Login = login;
+            Email = email;
+            Pwd = pwd;
+            Avis = avis;
+        }
+        public override bool Equals(object? obj)
+        {
+            return base.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
 
         public override string? ToString()
         {
-            return "id : " + Utilisateurs;
+            return "Users : " + Login;
         }
     }
 }

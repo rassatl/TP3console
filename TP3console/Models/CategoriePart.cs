@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,13 +7,28 @@ using System.Threading.Tasks;
 
 namespace TP3console.Models.EntityFramework
 {
-    partial class CategoriePart
+    public partial class Categorie
     {
-        public string Description { get; set; }
+        public Categorie(ILazyLoader lazyLoader, int id, string nom, string? description, ICollection<Film> films) : this(lazyLoader)
+        {
+            Id = id;
+            Nom = nom;
+            Description = description;
+            Films = films;
+        }
+        public override bool Equals(object? obj)
+        {
+            return base.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
 
         public override string? ToString()
         {
-            return "id : " + Description;
+            return "Description : " + Description;
         }
     }
 }
